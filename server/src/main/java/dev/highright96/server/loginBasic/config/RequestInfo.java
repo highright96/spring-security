@@ -1,4 +1,4 @@
-package dev.highright96.server.config;
+package dev.highright96.server.loginBasic.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package dev.highright96.server.controller;
+package dev.highright96.server.loginBasic.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
