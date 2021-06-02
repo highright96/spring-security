@@ -1,7 +1,8 @@
 package dev.highright96.server.loginCustomFilter.config;
 
+import dev.highright96.server.loginCustomFilter.student.StudentAuthenticationToken;
+import dev.highright96.server.loginCustomFilter.teacher.TeacherAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -23,7 +24,19 @@ public class CustomLoginFilter extends UsernamePasswordAuthenticationFilter {
         username = username.trim();
         String password = obtainPassword(request);
         password = (password != null) ? password : "";
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password);
-        return this.getAuthenticationManager().authenticate(authRequest);
+        String type = request.getParameter("type");
+        if (type.equals("student")) {
+            // Student
+            StudentAuthenticationToken token = StudentAuthenticationToken.builder()
+                    .credentials(username)
+                    .build();
+            return this.getAuthenticationManager().authenticate(token);
+        } else {
+            // Teacher
+            TeacherAuthenticationToken token = TeacherAuthenticationToken.builder()
+                    .credentials(username)
+                    .build();
+            return this.getAuthenticationManager().authenticate(token);
+        }
     }
 }
