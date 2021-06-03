@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
-        "dev.highright96.server.loginMultiChain"
+        "dev.highright96.server.loginUserDetails"
 })
 public class ServerApplication {
 

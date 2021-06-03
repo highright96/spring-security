@@ -1,5 +1,8 @@
-package dev.highright96.server.loginBasic.controller;
+package dev.highright96.server.loginUserDetails.controller;
 
+import dev.highright96.server.loginUserDetails.domain.User;
+import dev.highright96.server.loginUserDetails.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    UserService userService;
 
     @GetMapping("/")
     public String main() {
@@ -48,5 +54,11 @@ public class HomeController {
     @GetMapping("/auth")
     public Authentication auth() {
         return SecurityContextHolder.getContext().getAuthentication();
+    }
+
+    @ResponseBody
+    @GetMapping("/user")
+    public User user(String email) {
+        return userService.findUser(email).get();
     }
 }
