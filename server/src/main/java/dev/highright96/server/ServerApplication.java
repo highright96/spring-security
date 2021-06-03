@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"dev.highright96.server.loginCustomFilter"})
+@ComponentScan(basePackages = {
+        "dev.highright96.server.loginMultiChain"
+})
 public class ServerApplication {
 
     public static void main(String[] args) {
