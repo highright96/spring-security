@@ -4,7 +4,7 @@ import dev.highright96.server.loginUserDetails.domain.Authority;
 import dev.highright96.server.loginUserDetails.domain.User;
 import dev.highright96.server.loginUserDetails.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,15 +17,16 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
+@Slf4j
 public class UserService implements UserDetailsService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findUserByEmail(username).orElseThrow(
-                () -> new UsernameNotFoundException(username)
+        return userRepository.findUserByEmail(username).orElseThrow(() ->
+                new UsernameNotFoundException(username)
         );
     }
 

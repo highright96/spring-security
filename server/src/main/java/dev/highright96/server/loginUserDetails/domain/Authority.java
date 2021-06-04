@@ -11,19 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @IdClass(Authority.class)
 public class Authority implements GrantedAuthority {
 
     @Id
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private Long userId;
+
     @Id
     private String authority;
 
-    @Override
-    public String getAuthority() {
-        return null;
-    }
 }
+

@@ -1,14 +1,16 @@
 package dev.highright96.server.loginUserDetails.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@Getter
-@Setter
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class User implements UserDetails {
 
@@ -33,16 +35,16 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return enabled;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return enabled;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return enabled;
     }
 }
