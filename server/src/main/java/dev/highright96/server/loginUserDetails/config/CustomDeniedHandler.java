@@ -1,5 +1,6 @@
 package dev.highright96.server.loginUserDetails.config;
 
+import dev.highright96.server.loginUserDetails.exception.YouCannotAccessUserPage;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 

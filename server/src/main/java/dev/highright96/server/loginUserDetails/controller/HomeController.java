@@ -1,7 +1,7 @@
 package dev.highright96.server.loginUserDetails.controller;
 
-import dev.highright96.server.loginUserDetails.config.DbInit;
-import dev.highright96.server.loginUserDetails.config.YouCannotAccessUserPage;
+import dev.highright96.server.loginUserDetails.repository.DbInit;
+import dev.highright96.server.loginUserDetails.exception.YouCannotAccessUserPage;
 import dev.highright96.server.loginUserDetails.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;

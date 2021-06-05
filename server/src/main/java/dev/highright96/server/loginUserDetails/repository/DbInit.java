@@ -1,4 +1,4 @@
-package dev.highright96.server.loginUserDetails.config;
+package dev.highright96.server.loginUserDetails.repository;
 
 import dev.highright96.server.loginUserDetails.domain.User;
 import dev.highright96.server.loginUserDetails.service.UserService;

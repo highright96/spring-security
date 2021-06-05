@@ -1,4 +1,4 @@
-package dev.highright96.server.loginUserDetails.config;
+package dev.highright96.server.loginUserDetails.exception;
 
 
 import org.springframework.security.access.AccessDeniedException;
