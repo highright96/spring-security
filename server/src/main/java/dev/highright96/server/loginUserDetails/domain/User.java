@@ -7,12 +7,11 @@ import javax.persistence.*;
 import java.util.Set;
 
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@Getter
+@Setter
 @Entity
-public class User implements UserDetails {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,29 +21,19 @@ public class User implements UserDetails {
 
     private String password;
 
-    private boolean enabled;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "user_id"))
-    private Set<Authority> authorities;
-
-    @Override
-    public String getUsername() {
-        return email;
+    @Builder
+    public User(Long userId, String email, String password, Role role) {
+        this.userId = userId;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return enabled;
+    public String roleName() {
+        return role.name();
     }
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return enabled;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return enabled;
-    }
 }

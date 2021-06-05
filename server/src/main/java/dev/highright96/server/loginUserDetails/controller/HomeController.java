@@ -1,8 +1,7 @@
 package dev.highright96.server.loginUserDetails.controller;
 
-import dev.highright96.server.loginUserDetails.repository.DbInit;
 import dev.highright96.server.loginUserDetails.exception.YouCannotAccessUserPage;
-import dev.highright96.server.loginUserDetails.service.UserService;
+import dev.highright96.server.loginUserDetails.repository.DbInit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class HomeController {
 
-    private final UserService userService;
     private final DbInit dbInit;
 
     @PostConstruct

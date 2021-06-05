@@ -1,4 +1,4 @@
-package dev.highright96.server.loginUserDetails.config;
+package dev.highright96.server.loginUserDetails.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

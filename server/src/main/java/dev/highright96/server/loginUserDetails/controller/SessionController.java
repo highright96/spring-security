@@ -1,7 +1,7 @@
 package dev.highright96.server.loginUserDetails.controller;
 
-import dev.highright96.server.loginUserDetails.domain.User;
-import dev.highright96.server.loginUserDetails.domain.UserSession;
+import dev.highright96.server.loginUserDetails.security.UserPrincipal;
+import dev.highright96.server.loginUserDetails.security.UserSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.core.session.SessionRegistry;
@@ -28,7 +28,7 @@ public class SessionController {
         List<UserSession> sessionList =
                 sessionRegistry.getAllPrincipals().stream().map(p ->
                         UserSession.builder()
-                                .username(((User) p).getUsername())
+                                .username(((UserPrincipal) p).getUsername())
                                 .sessions(sessionRegistry.getAllSessions(p, false).stream().map(s ->
                                         UserSession.SessionInfo.builder()
                                                 .sessionId(s.getSessionId())

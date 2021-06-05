@@ -1,4 +1,4 @@
-package dev.highright96.server.loginUserDetails.domain;
+package dev.highright96.server.loginUserDetails.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,42 +1,37 @@
 package dev.highright96.server.loginUserDetails.repository;
 
+import dev.highright96.server.loginUserDetails.domain.Role;
 import dev.highright96.server.loginUserDetails.domain.User;
-import dev.highright96.server.loginUserDetails.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class DbInit {
 
-    private final UserService userService;
+    private final UserRepository userRepository;
 
     public void dbInit() throws Exception {
-        if (!userService.findUser("user1").isPresent()) {
-            User user = userService.save(User.builder()
+        if (!userRepository.findUserByEmail("user1").isPresent()) {
+            User user = userRepository.save(User.builder()
                     .email("user1")
                     .password("1111")
-                    .enabled(true)
+                    .role(Role.ROLE_USER)
                     .build());
-            userService.addAuthority(user.getUserId(), "ROLE_USER");
         }
-        if (!userService.findUser("user2").isPresent()) {
-            User user = userService.save(User.builder()
+        if (!userRepository.findUserByEmail("user2").isPresent()) {
+            User user = userRepository.save(User.builder()
                     .email("user2")
                     .password("1111")
-                    .enabled(true)
+                    .role(Role.ROLE_USER)
                     .build());
-            userService.addAuthority(user.getUserId(), "ROLE_USER");
         }
-        if (!userService.findUser("admin").isPresent()) {
-            User user = userService.save(User.builder()
+        if (!userRepository.findUserByEmail("admin").isPresent()) {
+            User user = userRepository.save(User.builder()
                     .email("admin")
                     .password("1111")
-                    .enabled(true)
+                    .role(Role.ROLE_ADMIN)
                     .build());
-            userService.addAuthority(user.getUserId(), "ROLE_ADMIN");
         }
     }
 }
