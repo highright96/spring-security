@@ -2,8 +2,8 @@ package dev.highright96.server.loginUserDetails.security.config;
 
 import dev.highright96.server.loginUserDetails.security.CustomDeniedHandler;
 import dev.highright96.server.loginUserDetails.security.CustomEntryPoint;
-import dev.highright96.server.loginUserDetails.security.CustomOAuth2UserService;
-import dev.highright96.server.loginUserDetails.security.CustomUserDetailsService;
+import dev.highright96.server.loginUserDetails.security.oauth2.CustomOAuth2UserService;
+import dev.highright96.server.loginUserDetails.security.local.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
@@ -70,6 +70,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(customOAuth2UserService)
+                .and()
                 .and()
 
                 .exceptionHandling()

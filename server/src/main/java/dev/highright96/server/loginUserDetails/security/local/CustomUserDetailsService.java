@@ -1,7 +1,8 @@
-package dev.highright96.server.loginUserDetails.security;
+package dev.highright96.server.loginUserDetails.security.local;
 
 import dev.highright96.server.loginUserDetails.domain.User;
 import dev.highright96.server.loginUserDetails.repository.UserRepository;
+import dev.highright96.server.loginUserDetails.security.UserPrincipal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

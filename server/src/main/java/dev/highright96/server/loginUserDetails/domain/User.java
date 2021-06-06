@@ -1,5 +1,6 @@
 package dev.highright96.server.loginUserDetails.domain;
 
+import dev.highright96.server.loginUserDetails.security.oauth2.AuthProvider;
 import lombok.*;
 
 import javax.persistence.*;

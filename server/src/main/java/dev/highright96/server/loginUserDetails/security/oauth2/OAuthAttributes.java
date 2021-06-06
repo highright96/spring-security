@@ -1,6 +1,5 @@
 package dev.highright96.server.loginUserDetails.security.oauth2;
 
-import dev.highright96.server.loginUserDetails.domain.AuthProvider;
 import dev.highright96.server.loginUserDetails.domain.Role;
 import dev.highright96.server.loginUserDetails.domain.User;
 import lombok.Builder;
