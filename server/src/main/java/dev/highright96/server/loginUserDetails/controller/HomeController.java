@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
@@ -26,12 +27,16 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String main(HttpSession httpSession, Model model) {
-        model.addAttribute("sessionId", httpSession.getId());
+    public String index() {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/main")
+    public String main() {
+        return "main";
+    }
+
+    @GetMapping("/login-form")
     public String login() {
         return "loginForm";
     }
@@ -57,14 +62,11 @@ public class HomeController {
         return "AccessDenied2";
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_USER')")
     @GetMapping("/user-page")
     public String userPage() throws YouCannotAccessUserPage {
-        if (true) throw new YouCannotAccessUserPage();
         return "UserPage";
     }
 
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     @GetMapping("/admin-page")
     public String adminPage() {
         return "AdminPage";

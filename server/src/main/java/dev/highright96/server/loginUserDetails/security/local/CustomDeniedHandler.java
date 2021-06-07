@@ -1,4 +1,4 @@
-package dev.highright96.server.loginUserDetails.security;
+package dev.highright96.server.loginUserDetails.security.local;
 
 import dev.highright96.server.loginUserDetails.exception.YouCannotAccessUserPage;
 import org.springframework.security.access.AccessDeniedException;
